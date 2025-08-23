@@ -4,6 +4,9 @@ library(tidyverse)
 #install.packages("rfema", repos = "https://ropensci.r-universe.dev")
 library(rfema)
 
+#Creating directory to save the data files
+if(!dir.exists('data')) dir.create('data')
+
 #Fetching OpenFEMA data via API:
 
 #Setting filters
