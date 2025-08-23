@@ -1,13 +1,13 @@
 #Setup
 library(tidyverse)
-library(tigris)
 library(sf)
+library(tidycensus)
+
+#Setting cache option for shapefiles
+options(tigris_use_cache = TRUE)
 
 #Creating directory to save the data files
 if(!dir.exists('data')) dir.create('data')
-
-#Telling tigris to use the cache
-options(tigris_use_cache = TRUE)
 
 #Setting list of states to include
 state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL", 
@@ -16,13 +16,21 @@ state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL",
                  "ND", "OH", "OK", "PA", "SC", "SD", "TN", 
                  "TX", "VA", "WV", "WI")
 
-#Load census tract geographies into a spatial dataframe (can be done similarly for other geographies)
-#I use generalized cartographic boundaries (cb=TRUE) because I want faster rendering and 
-#I do not need a high level of detail to count intersections with tornado tracks
-tract_geo <- map_df(state_codes, 
-                    ~tracts(state=.x, 
-                            cb=TRUE,
-                            year=2010))
+#Getting census data with tidycensus
 
-#saving the tract geography data
-saveRDS(tract_geo, file = "data/tract_geo.rds")
+#Fetching decennial census data and geographies
+census_2010 <- get_decennial(geography = "tract",
+                             variables = c(pop_10 = "P001001", #total pop
+                                           units_10 = "H003001", #total housing units
+                                           occ_10 = "H003002", #total occupied units
+                                           rent_10 = "H004004", #renter occupied units
+                                           own_10 = "H014002"), #owner occupied units
+                                            #add other variables from 2010 decennial census
+                             state = state_codes,
+                             year = 2010,
+                             output = "wide",
+                             geometry = TRUE, #Note: if you use this you don't have to separately import shapefiles
+                             keep_geo_vars = TRUE)
+
+#Fetching ACS data:
+acs_2010_2014 <- get_acs()

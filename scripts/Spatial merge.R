@@ -1,3 +1,5 @@
+#Spatial merge
+
 #joining tornadoes to 2010 geographies
 
 geo_torn <- st_join(tract_geo, torn, join = st_intersects, 
