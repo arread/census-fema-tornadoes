@@ -29,8 +29,8 @@ census_2010 <- get_decennial(geography = "tract",
                              state = state_codes,
                              year = 2010,
                              output = "wide",
-                             geometry = TRUE, #Note: if you use this you don't have to separately import shapefiles
-                             keep_geo_vars = TRUE)
+                             geometry = TRUE, #keep this on; need it for spatial join
+                             keep_geo_vars = TRUE) #you want these too
 
 #Fetching ACS data:
 acs_2010_2014 <- get_acs()
