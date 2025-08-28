@@ -18,7 +18,7 @@ state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL",
 
 #Getting census data with tidycensus
 
-#Fetching decennial census data and geographies
+#Example: Fetching decennial census data and geographies
 census_2010 <- get_decennial(geography = "tract",
                              variables = c(pop_10 = "P001001", #total pop
                                            units_10 = "H003001", #total housing units
@@ -32,5 +32,7 @@ census_2010 <- get_decennial(geography = "tract",
                              geometry = TRUE, #keep this on; need it for spatial join
                              keep_geo_vars = TRUE) #you want these too
 
-#Fetching ACS data:
+#Example: Fetching ACS data and geographies:
 acs_2010_2014 <- get_acs()
+
+
