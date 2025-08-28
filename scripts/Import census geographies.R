@@ -34,10 +34,14 @@ census_2010 <- get_decennial(geography = "tract",
 
 #Example: Fetching ACS data and geographies:
 acs_2010_2014 <- get_acs(geography="tract",
-                         variables = c(val_10 = "B25107001", #median house value for all owner-occupied units
-                           rent_10 = "B25111001"),#median gross rent
-                         state=state_codes,
+                         variables = c(val_10 = "B25107_001", #median house value for all owner-occupied units
+                           rent_10 = "B25111_001"),#median gross rent
                          year=2014, #we want the 2010-2014 values
+                         state = state_codes,
                          output = "wide",
                          geometry = TRUE,
                          keep_geo_vars = TRUE)
+
+#Saving the census datasets
+saveRDS(census_2010, file = "data/census_2010.rds")
+saveRDS(acs_2010_2014, file = "acs_2014.rds")
