@@ -6,7 +6,7 @@ library(tidyverse)
 if(!dir.exists('data')) dir.create('data')
 
 #Set end year
-#As of August 2025 the available datasets run 2019-2024
+#As of August 2025 the available end years for datasets are 2019-2024
 #Start year is 1950 for all tornado datasets
 year_end <- "2024"
 
