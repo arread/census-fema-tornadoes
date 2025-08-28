@@ -10,6 +10,6 @@ Once your key is active, save it to your R environment with `usethis::edit_r_env
 The import scripts can be run in any order, but the spatial merge script must be run last. The scripts included in this example are:
 1. `Import tornadoes.R`: Accesses, downloads, filters, and saves tornado tracks (paths) data from the SVRGIS database. These can also be downloaded manually from https://www.spc.noaa.gov/gis/svrgis/. Other SVRGIS data can be accessed the same way, including their wind and hail datasets.
 2. `Import FEMA declarations.R`: Accesses, downloads, and saves FEMA Disaster Declarations data from OpenFEMA using the R package `rfema` to access the API. These can also be downloaded from https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2. Other OpenFEMA can be accessed the same way.
-3. `Import Census.R`:
+3. `Import Census.R`: Accesses, downloads, and saves Census and ACS data using the `tidycensus` package. Example tables/variables are used, but users should modify the code to include variables of interest.
 
 #Harmonizing census data boundaries

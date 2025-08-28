@@ -17,6 +17,7 @@ state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL",
                  "TX", "VA", "WV", "WI")
 
 #Getting census data with tidycensus
+#To explore metadata on available tables/geographies/variables, use the tidycensus function load_variables()
 
 #Example: Fetching decennial census data and geographies
 census_2010 <- get_decennial(geography = "tract",
