@@ -23,9 +23,9 @@ census_2010 <- get_decennial(geography = "tract",
                              variables = c(pop_10 = "P001001", #total pop
                                            units_10 = "H003001", #total housing units
                                            occ_10 = "H003002", #total occupied units
-                                           rent_10 = "H004004", #renter occupied units
+                                           rntd_10 = "H004004", #renter occupied units
                                            own_10 = "H014002"), #owner occupied units
-                                            #add other variables from 2010 decennial census
+                                            #add other variables from 2010 decennial census as needed
                              state = state_codes,
                              year = 2010,
                              output = "wide",
@@ -33,6 +33,11 @@ census_2010 <- get_decennial(geography = "tract",
                              keep_geo_vars = TRUE) #you want these too
 
 #Example: Fetching ACS data and geographies:
-acs_2010_2014 <- get_acs()
-
-
+acs_2010_2014 <- get_acs(geography="tract",
+                         variables = c(val_10 = "B25107001", #median house value for all owner-occupied units
+                           rent_10 = "B25111001"),#median gross rent
+                         state=state_codes,
+                         year=2014, #we want the 2010-2014 values
+                         output = "wide",
+                         geometry = TRUE,
+                         keep_geo_vars = TRUE)
