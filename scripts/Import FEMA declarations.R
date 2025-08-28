@@ -19,7 +19,7 @@ my_filters <- list(state = c("AL", "AZ", "AR", "CO", "FL", "GA", "IL", "IN", "IA
                    incidentType = "Tornado") #specify incident type
 
 #Running the API data call on the DisasterDeclarationsSummaries dataset
-fema_dd <- open_fema(data_set = "DisasterDeclarationsSummaries", filters = my_filters)
+fema_dd <- open_fema(data_set = "DisasterDeclarationsSummaries", filters = my_filters, ask_before_call = FALSE)
 #R may prompt you that it has to split the API call due to a set max of 1000 records it can pull
 #Tell it yes to complete the full data call
 
