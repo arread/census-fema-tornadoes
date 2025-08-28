@@ -1,4 +1,11 @@
-#Spatial merge
+#Setup
+library(tidyverse)
+library(sf)
+
+census <- readRDS("data/census_2010.rds")
+acs <- readRDS("data/acs_2014.rds")
+fema_dd <- readRDS("data/fema_dd.rds")
+torn <- readRDS("data/torn.rds")
 
 #joining tornadoes to 2010 geographies
 
