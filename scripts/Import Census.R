@@ -45,4 +45,4 @@ acs_2010_2014 <- get_acs(geography="tract",
 
 #Saving the census datasets
 saveRDS(census_2010, file = "data/census_2010.rds")
-saveRDS(acs_2010_2014, file = "acs_2014.rds")
+saveRDS(acs_2010_2014, file = "data/acs_2014.rds")

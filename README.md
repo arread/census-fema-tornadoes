@@ -15,3 +15,7 @@ The import scripts can be run in any order, but the spatial merge script must be
 
 #Harmonizing census data boundaries
 In this example, we only use one geography year (2010 Decennial Census and 2010-2014 ACS on the same 2010 geographic boundaries). If you are using Census data from other years, you must use harmonized boundaries so that the spatial join is correct for all years being investigated. One option is to use already-harmonized datasets, such as those from Social Explorer or the Longitudinal Tract Database (LTDB) which provide estimates for past years' data within 2010 boundaries. You can also do the harmonization yourself if you are so inclined. See https://s4.ad.brown.edu/projects/diversity/researcher/Bridging.htm for a brief overview of some harmonization methods and the options available.
+
+#Tornado rating and damage levels
+
+#FEMA Disaster Declarations and assistance

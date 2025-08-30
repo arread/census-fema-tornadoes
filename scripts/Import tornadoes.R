@@ -8,7 +8,7 @@ if(!dir.exists('data')) dir.create('data')
 #Set end year
 #As of August 2025 the available end years for datasets are 2019-2024
 #Start year is 1950 for all tornado datasets
-year_end <- "2024"
+year_end <- "2024" #this is the most recent year
 
 #Generating URL for the data file download
 dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/1950-", year_end, "-torn-aspath.zip", sep="")
@@ -26,11 +26,11 @@ rm(dld_url, temp_noaa, torn_shp, year_end)
 
 #Sample cleaning:
 
-#Subset by year
+#Subset by year (in this example we look at 2000-2010)
 torn <- torn %>%
-  filter(yr>=1970 & yr<=2010, na.rm=TRUE)
+  filter(yr>=2000 & yr<=2010, na.rm=TRUE)
 
-#Subset by magnitude
+#Subset by magnitude (in this example we look at EF2+)
 torn <- torn %>%
   filter(mag>=2, na.rm=TRUE)
 
