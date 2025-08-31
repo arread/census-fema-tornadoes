@@ -6,7 +6,9 @@ The import scripts can be run in any order, but the spatial merge script must be
 1. `Import tornadoes.R`: Accesses, downloads, filters, and saves tornado tracks (paths) data from the SVRGIS database. These can also be downloaded manually from https://www.spc.noaa.gov/gis/svrgis/. Other SVRGIS data can be accessed the same way, including their wind and hail datasets.
 2. `Import FEMA declarations.R`: Accesses, downloads, and saves FEMA Disaster Declarations data from OpenFEMA using the R package `rfema` to access the API. These can also be downloaded from https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2. Other OpenFEMA can be accessed the same way.
 3. `Import Census.R`: Accesses, downloads, and saves Census and ACS data using the `tidycensus` package. Example tables/variables are used, but users should modify the code to include variables of interest.
-4. `Spatial merge.R`: Shows how to do spatial join and merge on census geography to combine the 3 datasets.
+4. `Merge tornadoes.R`: Shows how to do spatial join and merge on census geography to combine the tornadoes, declarations, and census datasets.
+5. `Import hail.R` and `Import wind.R`: Shows how to obtain wind and hail data from SVRGIS in the same way as obtaining the tornado data.
+6. `Merge wind and hail.R`: A simplified version of the merge code in script 4. This one, due to limitations in identifying declared disasters due to wind/hail alone, does not merge the FEMA data the same way we do with tornadoes. Instead, this script shows only how to perform the spatial join between the Census data and the wind/hail paths.
 
 # Obtaining Census data via API
 In order to pull demographic data using `tidycensus`, you'll need a Census API key. You can request one here: https://api.census.gov/data/key_signup.html
