@@ -81,3 +81,7 @@ geo_torn <- geo_torn %>%
   left_join(agg_df, by="GEOID")
 
 glimpse(geo_torn)
+
+#You now have a merged, filtered spatial dataframe for your defined time period(s) that can be used in analysis.
+#Saving to folder:
+saveRDS(geo_torn, file = "data/merged_df.rds")
