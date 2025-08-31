@@ -16,6 +16,8 @@ Once your key is active, save it to your R environment with `usethis::edit_r_env
 # Obtaining SVRGIS data with this code
 There is currently no API for the SVRGIS data, and other packages aimed at helping researchers access it have been deprecated. This code uses an approach that relies on a consistent URL and file storage structure. If that changes, I will try to catch that and edit this code, but the best backup option is to go to https://www.spc.noaa.gov/gis/svrgis/ and manually download the dataset(s) you need.
 
+I have included examples showing the download, filter, and merge with the wind and hail paths in addition to the tornado paths from SVRGIS; however, I have used the wind and hail datasets much less extensively for personal work, so the examples are not as detailed.
+
 # Harmonizing census data boundaries
 In this example, we only use one geography year (2010 Decennial Census and 2010-2014 ACS on the same 2010 geographic boundaries). If you are using Census data from other years, you must use harmonized boundaries so that the spatial join is correct for all years being investigated. One option is to use already-harmonized datasets, such as those from Social Explorer or the Longitudinal Tract Database (LTDB) which provide estimates for past years' data within 2010 boundaries. You can also do the harmonization yourself if you are so inclined. See https://s4.ad.brown.edu/projects/diversity/researcher/Bridging.htm for a brief overview of some harmonization methods and the options available.
 
