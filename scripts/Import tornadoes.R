@@ -32,7 +32,7 @@ torn_shp <- download.file(dld_url, temp_noaa)
 zip::unzip(zipfile = temp_noaa, exdir = "data/", junkpaths = TRUE)
 
 #Reading in the shapefile as spatial dataframe
-torn <- sf::st_read(paste("data/1950-",year_end, "-torn-aspath.shp", sep=""))
+torn <- sf::st_read(paste("data/", year_start, "-",year_end, "-", ds, "-", type, ".shp", sep=""))
 
 #Removing temp objects
 rm(dld_url, temp_noaa, torn_shp, year_end, year_start, ds, type)
