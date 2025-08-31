@@ -9,7 +9,7 @@ Walkthroughs are provided for
 
 This template can be extended to access and merge other OpenFEMA datasets based on incident (such as Public Assistance or Individual Assistance summary data), and any other geographic level of Census boundaries of interest to the researcher. 
 
-This is a revised, streamlined, and more generalizable version of the code used to access, merge, and clean the data for the manuscript [Read, A. (2025). Repeated disaster and the economic valuation of place: Temporal dynamics of tornado effects on housing prices in the United States, 1980–2010. Population and Environment, 47(3), 29](https://doi.org/10.1007/s11111-025-00502-w), which was inspired by the methods used in [Raker, 2020](https://doi-org/10.1007/s13524-020-00862-y). The full code used for analysis of my paper is available in a dedicated repository [here](https://github.com/arread/2025-repeated-disaster-economic-valuation).
+This is a revised, streamlined, and more generalizable version of the code used to access, merge, and clean the data for the manuscript [Read, A. (2025). Repeated disaster and the economic valuation of place: Temporal dynamics of tornado effects on housing prices in the United States, 1980–2010. Population and Environment, 47(3), 29](https://doi.org/10.1007/s11111-025-00502-w), which was inspired by the methods originally used in [Raker, 2020](https://doi-org/10.1007/s13524-020-00862-y). The full code used for analysis of my paper is available in a dedicated repository [here](https://github.com/arread/2025-repeated-disaster-economic-valuation).
 
 ## Data
 Datasets used (all publicly available):
