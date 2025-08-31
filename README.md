@@ -26,6 +26,8 @@ Tornado ratings on the Enhanced Fujita (EF) scale are based on observed physical
 
 For descriptions of damage indicators and wind estimates by EF-rating, see [McDonald and Mehta, 2006](https://digitalcommons.unl.edu/usdeptcommercepub/602/) or Summary Table 1 in [Read, 2025](https://doi.org/10.1007/s11111-025-00502-w).
 
+For the wind dataset, `mag` refers to wind speed in knots (1 knot = 1.15 mph). In the hail dataset, `mag` refers to the hail size in inches.
+
 # FEMA Disaster Declarations and assistance
 Documentation on the OpenFEMA Disaster Declarations Summaries dataset (V2) can be found on [the OpenFEMA site](https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2). This dataset contains raw, unedited data from the National Emergency Management Information System (NEMIS). Disaster declarations are determined by state and county. As such, it is difficult to get more granular estimates of where the damage occurred within the declared counties without also obtaining the geospatial data on storm/event exposure. Part of what this code demonstrates is how to link geospatial data on disaster events (like tornadoes) to FEMA event-specific data by matching location (county, state) with the timeframe (year, month, and day) of the incident.
 
