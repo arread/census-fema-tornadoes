@@ -53,7 +53,7 @@ Tornado ratings on the Enhanced Fujita (EF) scale are based on observed physical
 
 The SVRGIS dataset `mag` column uses F-scale ratings for pre-2007 events and EF-scale ratings for post-2007 events. The `fc` column in the dataset provides a flag for where unknown F-scale ratings for some tornadoes 1953-1982 were later estimated in the database in 2016 based on property loss. See the documentation at https://www.spc.noaa.gov/gis/svrgis/ for details.
 
-For descriptions of damage indicators and wind estimates by EF-rating, see [McDonald and Mehta, 2006](https://digitalcommons.unl.edu/usdeptcommercepub/602/) or Summary Table 1 in [Read, 2025](https://doi.org/10.1007/s11111-025-00502-w).
+For descriptions of damage indicators and wind estimates by EF-rating and structure type, see [McDonald and Mehta, 2006](https://digitalcommons.unl.edu/usdeptcommercepub/602/) or Summary Table 1 in [Read, 2025](https://doi.org/10.1007/s11111-025-00502-w).
 
 For the wind dataset, `mag` refers to wind speed in knots (1 knot = 1.15 mph). In the hail dataset, `mag` refers to the hail size in inches.
 
