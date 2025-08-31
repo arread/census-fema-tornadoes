@@ -7,13 +7,26 @@ if(!dir.exists('data')) dir.create('data')
 
 #Set end year
 #As of August 2025 the available end years for datasets are 2019-2024
-#Start year is 1950 for all tornado datasets
 year_end <- "2024" #this is the most recent year
 
-#Generating URL for the data file download
-dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/1950-", year_end, "-torn-aspath.zip", sep="")
+#Set start year
+#Start year is 1950 for all tornado datasets, and 1955 for hail and wind
+year_start <- "1950"
 
-#Fetching SVRGIS tornado tracks data layer (shapefile)
+#Set dataset
+#Options are "torn", "wind" or "hail"
+ds <- "torn"
+
+#Set data type
+#Options are paths ("aspath") or initial points ("initpoint")
+#This example only shows how to work with paths
+type <- "aspath"
+
+#Generating URL for the data file download (example: tornadoes)
+dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/", 
+                 year_start,"-", year_end, "-", ds, "-", type, ".zip", sep="")
+
+#Fetching data layer (shapefile)
 temp_noaa <- tempfile()
 torn_shp <- download.file(dld_url, temp_noaa)
 zip::unzip(zipfile = temp_noaa, exdir = "data/", junkpaths = TRUE)
@@ -22,7 +35,7 @@ zip::unzip(zipfile = temp_noaa, exdir = "data/", junkpaths = TRUE)
 torn <- sf::st_read(paste("data/1950-",year_end, "-torn-aspath.shp", sep=""))
 
 #Removing temp objects
-rm(dld_url, temp_noaa, torn_shp, year_end)
+rm(dld_url, temp_noaa, torn_shp, year_end, year_start, ds, type)
 
 #Sample cleaning:
 
