@@ -23,7 +23,7 @@ ds <- "hail"
 type <- "aspath"
 
 #Generating URL for the data file download (example: hail)
-dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/", 
+dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/",
                  year_start,"-", year_end, "-", ds, "-", type, ".zip", sep="")
 
 #Fetching data layer (shapefile)

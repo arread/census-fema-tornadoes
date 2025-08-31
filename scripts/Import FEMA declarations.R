@@ -13,7 +13,7 @@ if(!dir.exists('data')) dir.create('data')
 my_filters <- list(state = c("AL", "AZ", "AR", "CO", "FL", "GA", "IL", "IN", "IA",
                                             "KS", "KY", "LA", "MA", "MI", "MN", "MS", "MO", "MT",
                                             "NE", "NY", "NC", "ND", "OH", "OK", "PA", "SC", "SD",
-                                            "TN", "TX", "VA", "WV", "WI"), 
+                                            "TN", "TX", "VA", "WV", "WI"),
                    fyDeclared = "<= 2020", #specify max fiscal year declared
                    fyDeclared = ">=1970", #specify min fiscal year declared
                    incidentType = "Tornado") #specify incident type

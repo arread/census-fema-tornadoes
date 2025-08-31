@@ -14,7 +14,7 @@ wind <- readRDS("data/wind.rds")
 hail <- readRDS("data/hail.rds")
 
 #joining wind to 2010 geographies using intersection (this example uses the 2010 decennial census)
-geo_wind <- st_join(census, wind, join = st_intersects, 
+geo_wind <- st_join(census, wind, join = st_intersects,
                     suffix = c(.geo, .wind), left = TRUE)
 glimpse(geo_wind)
 
@@ -23,8 +23,8 @@ geo_wind$Tx_10 <- as.numeric(ifelse(is.na(geo_wind$om), "0", "1"))
 glimpse(geo_wind)
 
 #creating exposure frequency variable for this timeframe (2000-2010)
-geo_wind <- geo_wind %>% 
-  add_count(GEOID, wt = Tx_10) %>% 
+geo_wind <- geo_wind %>%
+  add_count(GEOID, wt = Tx_10) %>%
   rename(freq = n)
 glimpse(geo_wind)
 
@@ -32,13 +32,13 @@ glimpse(geo_wind)
 #If there are other EVENT-SPECIFIC items you want to use, aggregate them here first
 #We will be removing duplicate tract rows from the main dataset so event data will be lost if not aggregated first
 #If you are looking at more than one defined time period, repeat this code block using appropriate year filters
-#To create one aggregation per time period, then merge all the aggregated dfs with the main df
-agg_df <- geo_wind %>% 
-  select(GEOID, mag, Tx_10, freq) %>% 
-  filter(Tx_10==1) %>% 
-  group_by(GEOID) %>% 
+#Then merge all the aggregated dfs with the main df
+agg_df <- geo_wind %>%
+  select(GEOID, mag, Tx_10, freq) %>%
+  filter(Tx_10==1) %>%
+  group_by(GEOID) %>%
   mutate(mag_agg=max(mag, na.rm=TRUE)) %>% #for wind, this is max speed in knots reached by any event in the time period
-  select(-c("mag"))%>% 
+  select(-c("mag"))%>%
   rename(mag_10=mag_agg)%>%
   filter(duplicated(GEOID)==FALSE)%>% #removing duplicates now that we've aggregated across events by geography
   mutate_all(~replace(., is.na(.), 0))%>% #replacing NA with 0 for the frequency/mag counts
@@ -61,7 +61,7 @@ saveRDS(geo_wind, file = "data/merged_wind.rds")
 
 
 #joining hail to 2010 geographies using intersection (this example uses the 2010 decennial census)
-geo_hail <- st_join(census, hail, join = st_intersects, 
+geo_hail <- st_join(census, hail, join = st_intersects,
                     suffix = c(.geo, .hail), left = TRUE)
 glimpse(geo_hail)
 
@@ -70,8 +70,8 @@ geo_hail$Tx_10 <- as.numeric(ifelse(is.na(geo_hail$om), "0", "1"))
 glimpse(geo_hail)
 
 #creating exposure frequency variable for this timeframe (2000-2010)
-geo_hail <- geo_hail %>% 
-  add_count(GEOID, wt = Tx_10) %>% 
+geo_hail <- geo_hail %>%
+  add_count(GEOID, wt = Tx_10) %>%
   rename(freq = n)
 glimpse(geo_hail)
 
@@ -79,13 +79,13 @@ glimpse(geo_hail)
 #If there are other EVENT-SPECIFIC items you want to use, aggregate them here first
 #We will be removing duplicate tract rows from the main dataset so event data will be lost if not aggregated first
 #If you are looking at more than one defined time period, repeat this code block using appropriate year filters
-#To create one aggregation per time period, then merge all the aggregated dfs with the main df
-agg_df <- geo_hail %>% 
-  select(GEOID, mag, Tx_10, freq) %>% 
-  filter(Tx_10==1) %>% 
-  group_by(GEOID) %>% 
+#Then merge all the aggregated dfs with the main df
+agg_df <- geo_hail %>%
+  select(GEOID, mag, Tx_10, freq) %>%
+  filter(Tx_10==1) %>%
+  group_by(GEOID) %>%
   mutate(mag_agg=max(mag, na.rm=TRUE)) %>% #for hail, this is max size in inches reached by any event in the time period
-  select(-c("mag"))%>% 
+  select(-c("mag"))%>%
   rename(mag_10=mag_agg)%>%
   filter(duplicated(GEOID)==FALSE)%>% #removing duplicates now that we've aggregated across events by geography
   mutate_all(~replace(., is.na(.), 0))%>% #replacing NA with 0 for the frequency/mag counts

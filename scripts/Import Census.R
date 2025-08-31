@@ -10,10 +10,10 @@ options(tigris_use_cache = TRUE)
 if(!dir.exists('data')) dir.create('data')
 
 #Setting list of states to include
-state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL", 
-                 "IN", "IA", "KS", "KY", "LA", "MA", "MI", 
-                 "MN", "MS", "MO", "MT", "NE", "NY", "NC", 
-                 "ND", "OH", "OK", "PA", "SC", "SD", "TN", 
+state_codes <- c("AL", "AZ", "AR", "CO", "FL", "GA", "IL",
+                 "IN", "IA", "KS", "KY", "LA", "MA", "MI",
+                 "MN", "MS", "MO", "MT", "NE", "NY", "NC",
+                 "ND", "OH", "OK", "PA", "SC", "SD", "TN",
                  "TX", "VA", "WV", "WI")
 
 #Getting census data with tidycensus

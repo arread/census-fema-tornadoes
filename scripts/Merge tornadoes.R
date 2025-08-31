@@ -7,7 +7,7 @@ fema_dd <- readRDS("data/fema_dd.rds")
 torn <- readRDS("data/torn.rds")
 
 #joining tornadoes to 2010 geographies using intersection (this example uses the 2010 decennial census)
-geo_torn <- st_join(census, torn, join = st_intersects, 
+geo_torn <- st_join(census, torn, join = st_intersects,
                     suffix = c(.geo, .torn), left = TRUE)
 glimpse(geo_torn)
 
@@ -29,11 +29,11 @@ glimpse(geo_torn)
 # PA = Public Assistance
 # DD = Major Disaster Declaration
 
-geo_torn$IA <- as.numeric(ifelse(is.na(geo_torn$iaProgramDeclared) & is.na(geo_torn$ihProgramDeclared), "0", 
+geo_torn$IA <- as.numeric(ifelse(is.na(geo_torn$iaProgramDeclared) & is.na(geo_torn$ihProgramDeclared), "0",
                                   ifelse(geo_torn$iaProgramDeclared==1 | geo_torn$ihProgramDeclared==1, "1", "0")))
 
 
-geo_torn$PA <- as.numeric(ifelse(is.na(geo_torn$paProgramDeclared), "0", 
+geo_torn$PA <- as.numeric(ifelse(is.na(geo_torn$paProgramDeclared), "0",
                                   ifelse(geo_torn$paProgramDeclared==1, "1", "0")))
 
 
@@ -46,8 +46,8 @@ geo_torn$Tx_10 <- as.numeric(ifelse(is.na(geo_torn$om), "0", "1"))
 glimpse(geo_torn)
 
 #creating exposure frequency variable for this timeframe (2000-2010)
-geo_torn <- geo_torn %>% 
-  add_count(GEOID, wt = Tx_10) %>% 
+geo_torn <- geo_torn %>%
+  add_count(GEOID, wt = Tx_10) %>%
   rename(freq = n)
 glimpse(geo_torn)
 
@@ -55,13 +55,13 @@ glimpse(geo_torn)
 #If there are other EVENT-SPECIFIC items you want to use, aggregate them here first
 #We will be removing duplicate tract rows from the main dataset so event data will be lost if not aggregated first
 #If you are looking at more than one defined time period, repeat this code block using appropriate year filters
-#To create one aggregation per time period, then merge all the aggregated dfs with the main df
-agg_df <- geo_torn %>% 
-  select(GEOID, mag, IA, PA, DD, Tx_10, freq) %>% 
-  filter(Tx_10==1) %>% 
-  group_by(GEOID) %>% 
-  mutate(IA_agg=max(IA, na.rm=TRUE), PA_agg=max(PA, na.rm=TRUE), DD_agg=max(DD, na.rm=TRUE), mag_agg=max(mag, na.rm=TRUE)) %>% 
-  select(-c("IA", "PA", "DD", "mag"))%>% 
+#Then merge all the aggregated dfs with the main df
+agg_df <- geo_torn %>%
+  select(GEOID, mag, IA, PA, DD, Tx_10, freq) %>%
+  filter(Tx_10==1) %>%
+  group_by(GEOID) %>%
+  mutate(IA_agg=max(IA, na.rm=TRUE), PA_agg=max(PA, na.rm=TRUE), DD_agg=max(DD, na.rm=TRUE), mag_agg=max(mag, na.rm=TRUE)) %>%
+  select(-c("IA", "PA", "DD", "mag"))%>%
   rename(IA_10=IA_agg, PA_10=PA_agg, DD_10=DD_agg, mag_10=mag_agg)%>%
   filter(duplicated(GEOID)==FALSE)%>% #removing duplicates now that we've aggregated across events by geography
   mutate_all(~replace(., is.na(.), 0))%>% #replacing NA with 0 for the frequency/mag/DD counts

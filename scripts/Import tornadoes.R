@@ -23,7 +23,7 @@ ds <- "torn"
 type <- "aspath"
 
 #Generating URL for the data file download (example: tornadoes)
-dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/", 
+dld_url <- paste("https://www.spc.noaa.gov/gis/svrgis/zipped/",
                  year_start,"-", year_end, "-", ds, "-", type, ".zip", sep="")
 
 #Fetching data layer (shapefile)
