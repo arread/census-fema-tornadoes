@@ -3,7 +3,6 @@ library(tidyverse)
 library(sf)
 
 census <- readRDS("data/census_2010.rds")
-acs <- readRDS("data/acs_2014.rds")
 fema_dd <- readRDS("data/fema_dd.rds")
 torn <- readRDS("data/torn.rds")
 
@@ -84,4 +83,4 @@ glimpse(geo_torn)
 
 #You now have a merged, filtered spatial dataframe for your defined time period(s) that can be used in analysis.
 #Saving to folder:
-saveRDS(geo_torn, file = "data/merged_df.rds")
+saveRDS(geo_torn, file = "data/merged_torn.rds")
