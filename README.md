@@ -1,5 +1,15 @@
 # About
-This code example shows how to pull and integrate data on tornado tracks (from NOAA/NWS SVRGIS database) and FEMA disaster declarations (from OpenFEMA) with demographic data from the Decennial Census and American Community Survey.
+This code provides examples of how to access (via API), download, filter, prepare, and merge data from the NOAA/NWS Severe Weather GIS Database (SVRGIS) Tornado Tracks paths dataset, the OpenFEMA Disaster Declarations Summaries dataset, and data from the Decennial Census and American Community Survey (ACS). 
+
+Walkthroughs are provided for 
+
+- Merging FEMA disaster declarations to SVRGIS tornado paths data based on incident date and location to determine which tornado events were eventually declared as major disasters
+- Performing a spatial join between tornado paths and Census geographies (intersection of line and polygon) to identify geographic areas that were exposed to tornadoes during the user-specified timeframe.
+- Accessing wind and hail paths data from SVRGIS and performing a spatial join between those datasets and Census data.
+
+This template can be extended to access and merge other OpenFEMA datasets based on incident (such as Public Assistance or Individual Assistance summary data), and any other geographic level of Census boundaries of interest to the researcher. 
+
+This is a revised, streamlined, and more generalizable version of the code used to access, merge, and clean the data for the manuscript [Read, A. (2025). Repeated disaster and the economic valuation of place: Temporal dynamics of tornado effects on housing prices in the United States, 1980–2010. Population and Environment, 47(3), 29](https://doi.org/10.1007/s11111-025-00502-w). The actual code used for analysis of that paper is available in a dedicated repository [here](https://github.com/arread/2025-repeated-disaster-economic-valuation).
 
 # Scripts
 The import scripts can be run in any order, but the spatial merge script must be run last. The scripts included in this example are:
