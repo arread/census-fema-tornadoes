@@ -1,4 +1,7 @@
 #Setup
+if (!require(tidyverse)) install.packages("tidyverse")
+if (!require(sf)) install.packages("sf")
+
 library(tidyverse)
 library(sf)
 

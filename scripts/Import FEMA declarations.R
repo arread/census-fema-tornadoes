@@ -1,7 +1,8 @@
 #Setup
+if (!require(rfema)) install.packages("rfema", repos = "https://ropensci.r-universe.dev")
+if (!require(tidyverse)) install.packages("tidyverse")
+
 library(tidyverse)
-#Install rfema directly from repo using:
-#install.packages("rfema", repos = "https://ropensci.r-universe.dev")
 library(rfema)
 
 #Creating directory to save the data files
