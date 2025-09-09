@@ -52,3 +52,6 @@ rsconnect/
 .rds
 .Rds
 /data
+
+# MacOS file storage attributes
+.DS_Store
